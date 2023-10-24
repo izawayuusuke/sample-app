@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  get 'todolists/new'
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
@@ -8,7 +7,10 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "posts#index"
-  get 'top' => 'homes#top'
 
+  get 'todolists/new'
+  get 'top' => 'homes#top'
   post 'todolists' => 'todolists#create'
+  get 'todolists' => 'todolists#index'
+  get 'todolists/:id' => 'todolists#show', as: 'todolist'
 end
