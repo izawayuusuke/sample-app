@@ -14,21 +14,27 @@ class TodolistsController < ApplicationController
   end
 
   def index
-    @lists = List.all
+    @lists = List.all # データを全て取得
   end
 
   def show
-    @list = List.find(params[:id])
+    @list = List.find(params[:id]) # データを1件取得
   end
 
   def edit
-    @list = List.find(params[:id])
+    @list = List.find(params[:id]) # データを1件取得
   end
 
   def update
-    list = List.find(params[:id])
-    list.update(list_params)
-    redirect_to todolist_path(list.id)
+    list = List.find(params[:id]) # データを1件取得
+    list.update(list_params) # データを更新
+    redirect_to todolist_path(list.id) # List詳細画面へリダイレクト
+  end
+
+  def destroy
+    list = List.find(params[:id]) # データを1件取得
+    list.destroy # データを削除
+    redirect_to todolists_path # List一覧画面へリダイレクト
   end
 
   private
